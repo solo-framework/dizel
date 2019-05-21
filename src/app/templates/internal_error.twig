@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Page for internal errors</title>
+</head>
+<body>
+	<h1>Internal Error</h1>
+
+	{% if debug %}
+		<p>{{ exception.getMessage() }}  <i>in {{ exception.getFile() }}, {{ exception.getLine() }}</i></p>
+		<pre>{{ exception.getTraceAsString() }}</pre>
+
+	{% endif %}
+
+</body>
+</html>
