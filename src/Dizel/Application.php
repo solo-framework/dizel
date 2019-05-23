@@ -174,6 +174,7 @@ class Application
 			};
 		}
 
+		// компоненты приложения (напр. notAllowedHandler и пр)
 		$components = Configurator::getSection("components");
 
 		if (count($components) > 0)

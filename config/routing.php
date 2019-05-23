@@ -16,4 +16,4 @@ $router = \Dizel\Application::getInstance()->app;
 $router->get("/", IndexView::class)->setName("view.index");
 $router->get("/index", IndexView::class)->setName("view.index");
 
-$router->get("/action/test", \App\Action\TestAction::class)->setName("action.test");
+$router->post("/action/test", \App\Action\TestAction::class)->setName("action.test");

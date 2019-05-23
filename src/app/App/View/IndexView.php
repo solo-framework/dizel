@@ -30,7 +30,8 @@ class IndexView extends View
 	public function preExecute(Request $request, Response $response, array $args)
 	{
 		$this->logger->error("message!!!", ["e" => new \Exception(33), "arr" => [2,3,4], "key" => "VALUE"]);
-//		return $response->withRedirect("/ffff");
+//		if (!$actor)
+	//		return $response->withRedirect("/index");
 	}
 
 	/**
@@ -39,11 +40,14 @@ class IndexView extends View
 	 * @param array $args
 	 *
 	 * @return ResponseInterface
+	 * @throws \ReflectionException
 	 */
 	public function execute(Request $request, Response $response, array $args)
 	{
+//		$this->logger->error("FETCH", [$this->fetch()]);
+
 		$this->name = $request->getParam("name");
-		return $this->render($response, "IndexView.twig");
+		return $this->display($response);//, "IndexView.twig");
 	}
 }
 

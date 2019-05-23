@@ -39,11 +39,14 @@ class TestAction extends Action
 	public function execute(Request $request, Response $response, array $args)
 	{
 //		$this->logger->debug(print_r($request->getParams(), 1));
-//		return $response->withRedirect("/lololo");
 
-//		$this->logger->debug("!!", $request->getParams());
+		// do some work
+		return $response->withRedirect("/some_view");
 
-		return $response->withJson($request->getParams());
+		// or return some data
+//		return $response->withJson($request->getParams());
+
+		// you may use trait AJAXResponse for return JSON as well
 	}
 }
 

@@ -1,6 +1,7 @@
 .idea/
 var/cache/
 var/log/
+var/sessions/
 vendor/
 
 !.gitkeep
