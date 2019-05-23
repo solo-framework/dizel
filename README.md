@@ -33,4 +33,10 @@ https://github.com/solo-framework/docker-php7
 Запуск этого скрипта выведет что-то похожеее на http://172.17.0.2:9191,
 этот адрес нужно открыть в браузере.
 
+### Запуск консольных задач
+
+```
+./run-in-container.sh 'cd /app && php cli.php'
+```
+
 
