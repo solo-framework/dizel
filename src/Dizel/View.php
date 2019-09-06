@@ -45,8 +45,6 @@ abstract class View extends Controller
 	 * @param string $ext
 	 *
 	 * @return \Psr\Http\Message\ResponseInterface
-	 * @throws \ReflectionException
-	 * @throws \Twig\Error\LoaderError
 	 */
 	public function display(Response $response, $templateFile = null, $ext = "twig")
 	{
@@ -76,8 +74,6 @@ abstract class View extends Controller
 	 * @param string $ext Расширение файла шаблона
 	 *
 	 * @return string
-	 * @throws \ReflectionException
-	 * @throws \Twig\Error\LoaderError
 	 */
 	public function render($templateFile = null, $ext = "twig")
 	{

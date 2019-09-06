@@ -51,7 +51,8 @@ return [
 				"debug"      => true,
 				"cache"      => "var/cache",
 				"extensions" => [
-					Twig_Extension_Debug::class
+					//Twig_Extension_Debug::class
+					\Twig\Extension\DebugExtension::class
 				],
 				"filters"    => [],
 				"functions"  => [],

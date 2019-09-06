@@ -40,7 +40,6 @@ class IndexView extends View
 	 * @param array $args
 	 *
 	 * @return ResponseInterface
-	 * @throws \ReflectionException
 	 */
 	public function execute(Request $request, Response $response, array $args)
 	{

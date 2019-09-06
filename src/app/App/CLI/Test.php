@@ -29,9 +29,11 @@ class Test extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
+		// Пример запуска  ./run-in-container.sh 'cd /app && php cli.php test_command -b blabla  password'
+
 //		print_r($input->getOptions());
 //		print_r($input->getArguments());
-		$output->write("This is TEST command");
+		$output->writeln("This is TEST command with password >> {$input->getArgument("password")} and b: {$input->getOption("blabla")}" );
 		return 0;
 	}
 }
