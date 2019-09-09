@@ -37,6 +37,7 @@ class CliController// extends Command
 		$this->logger = Logger::getLogger("cli");
 
 		$this->app = $this->container->get("cli");
+//		$this->app->setCatchExceptions(false);
 	}
 
 	public function __invoke(Request $request, Response $response, array $args)

@@ -11,7 +11,7 @@
 return [
 	"framework" => [
 		'settings' => [
-			"debug"               => false,
+//			"debug"               => false,
 			'displayErrorDetails' => false,
 			"outputBuffering"     => "append",
 			"routerCacheFile"     => false
@@ -19,7 +19,7 @@ return [
 	],
 
 	"app" => [
-		"debug"   => false,
+//		"debug"   => false,
 		"phpErrorHandler" => "",
 		"errorHandler" => "",
 		"routing" => ""

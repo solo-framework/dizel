@@ -13,12 +13,12 @@ return [
 
 	"framework" => [
 		'settings' => [
-			"debug" => true,
+//			"debug" => true,
 			'displayErrorDetails' => true
 		],
 	],
 
 	"app" => [
-		"debug" => true,
+//		"debug" => true,
 	],
 ];

@@ -42,10 +42,10 @@ return [
 	],
 
 	"app" => [
-		"debug"   => false,
+//		"debug"   => false,
 		"routing" => "config/cli.routing.php",
 		"phpErrorHandler" => \Dizel\Components\InternalCliErrorHandler::class,
-		"errorHandler" => \Dizel\Components\InternalCliErrorHandler::class,
+		"errorHandler"    => \Dizel\Components\InternalCliErrorHandler::class,
 	],
 
 	"components" => [

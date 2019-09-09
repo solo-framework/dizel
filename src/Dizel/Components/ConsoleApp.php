@@ -11,13 +11,13 @@
 namespace Dizel\Components;
 
 use Dizel\ApplicationComponent;
-use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Application as ConsoleApplication;
 
 class ConsoleApp extends ApplicationComponent
 {
 	public function getComponent()
 	{
-		$app = new Application();
+		$app = new ConsoleApplication();
 		$commands = $this->getOption("commands");
 
 		if (count($commands))

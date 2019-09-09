@@ -29,10 +29,12 @@ class Application
 	/**
 	 * @param $configFile
 	 *
+	 * @param bool $isDebug
+	 *
 	 * @return Application
 	 * @throws \Throwable
 	 */
-	public static function createApplication($configFile)
+	public static function createApplication($configFile, $isDebug)
 	{
 		set_error_handler(function ($severity, $message, $file, $line) {
 			if (error_reporting() & $severity)
@@ -68,17 +70,15 @@ class Application
 //			exit(1);
 //		});
 
-		$isDebug = false;
 		if (self::$instance == null)
 		{
 			try
 			{
-
 				Configurator::init(new PHPConfiguratorParser($configFile));
 
-				$isDebug = Configurator::get("app:debug");
 				$settings = Configurator::getSection("framework");
 				$className = get_called_class();
+
 				self::$instance = new $className($isDebug);
 				self::$instance->init($settings);
 
@@ -107,20 +107,30 @@ class Application
 		if (!$isDebug)
 			throw $e;
 
-		$isCli = ( empty($_SERVER['REMOTE_ADDR']) and !isset($_SERVER['HTTP_USER_AGENT']) and count($_SERVER['argv']) > 0);
+		$isCli = (empty($_SERVER['REMOTE_ADDR']) and !isset($_SERVER['HTTP_USER_AGENT']) and count($_SERVER['argv']) > 0);
 
 		if (!$isCli)
 			http_response_code(500);
 
-		echo "Internal error: ". $e->getMessage();
-		echo " in {$e->getFile()}[{$e->getLine()}]";
-		echo "";
-		echo $e->getTraceAsString();
+		$message = "Internal error: ". $e->getMessage();
+		$message .= " in {$e->getFile()}[{$e->getLine()}]";
+		$message .= "\n";
+		$message .= $e->getTraceAsString();
+
+		echo $message;
 
 		exit(1);
 	}
 
 
+	/**
+	 * Возвращает объект компонента, указанного в настройках
+	 * в секции "components"
+	 *
+	 * @param string $id ID компонента, напр.: "view"
+	 *
+	 * @return mixed
+	 */
 	public function getComponent($id)
 	{
 		return $this->app->getContainer()->get($id);
@@ -129,18 +139,11 @@ class Application
 	/**
 	 * Приватный коструктор для реализации Singleton
 	 *
-	 * @param array $configuration
-	 *
+	 * @param boolean $isDebug Режим отладки приложения
 	 */
 	protected function __construct($isDebug)
 	{
 		$this->debug = $isDebug;
-//		set_exception_handler(function ($exc){
-//			throw new \ErrorException($exc->getMessage(), 0);//, $severity, $file, $line);
-////			echo "ECX ";
-////			echo $exc;
-////			$this->handleError($exc, true);
-//		});
 	}
 
 	/**
@@ -150,14 +153,11 @@ class Application
 	 */
 	protected function init($configuration)
 	{
-
+		$isDebug = $this->debug;
 		$container = new \Slim\Container($configuration);
-
 		Logger::init(Configurator::getSection("logger"));
 
 		$phpErrorHandler = Configurator::get("app:phpErrorHandler");
-		$isDebug = Configurator::get("app:debug");
-
 		// Это обработчик внутренних ошибок PHP
 		if ($phpErrorHandler)
 		{

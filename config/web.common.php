@@ -36,9 +36,9 @@ return [
 	],
 
 	"app" => [
-		"debug"   => false,
+//		"debug"   => false,
 		"routing" => "config/routing.php",
-		"phpErrorHandler" => \Dizel\Components\InternalErrorHandler::class
+		"phpErrorHandler" => \Dizel\Components\InternalErrorHandler::class,
 	],
 
 	"components" => [

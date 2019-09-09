@@ -35,7 +35,7 @@ class InternalCliErrorHandler
 
 	public function __invoke(Request $request, Response $response, \Throwable $error)
 	{
-		echo "Error: " . $error->getMessage() . PHP_EOL;
+		echo "Application Error: " . $error->getMessage() . PHP_EOL;
 		echo "in {$error->getFile()}, {$error->getLine()}" . PHP_EOL;
 		if ($this->debug)
 			echo "\nTrace: {$error->getTraceAsString()}" . PHP_EOL;

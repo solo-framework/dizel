@@ -10,6 +10,7 @@
 
 namespace App\View;
 
+use Dizel\Application;
 use Dizel\View;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
@@ -29,7 +30,8 @@ class IndexView extends View
 	 */
 	public function preExecute(Request $request, Response $response, array $args)
 	{
-		$this->logger->error("message!!!", ["e" => new \Exception(33), "arr" => [2,3,4], "key" => "VALUE"]);
+//		throw new \Exception("!!!");
+//		$this->logger->error("message!!!", ["e" => new \Exception(33), "arr" => [2,3,4], "key" => "VALUE"]);
 //		if (!$actor)
 	//		return $response->withRedirect("/index");
 	}
