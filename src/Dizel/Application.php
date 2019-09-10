@@ -32,7 +32,6 @@ class Application
 	 * @param bool $isDebug
 	 *
 	 * @return Application
-	 * @throws \Throwable
 	 */
 	public static function createApplication($configFile, $isDebug)
 	{
@@ -227,7 +226,6 @@ class Application
 	 * @param bool $silent
 	 *
 	 * @return \Psr\Http\Message\ResponseInterface
-	 * @throws \Throwable
 	 */
 	public function run($silent = false)
 	{

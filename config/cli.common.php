@@ -45,7 +45,7 @@ return [
 //		"debug"   => false,
 		"routing" => "config/cli.routing.php",
 		"phpErrorHandler" => \Dizel\Components\InternalCliErrorHandler::class,
-		"errorHandler"    => \Dizel\Components\InternalCliErrorHandler::class,
+		"errorHandler"    => ""
 	],
 
 	"components" => [
@@ -54,7 +54,7 @@ return [
 			"options" => []
 		],
 		"cli"         => [
-			"@class"  => \Dizel\Components\ConsoleApp::class,//'Core\Components\ConsoleApp',
+			"@class"  => \Dizel\Components\ConsoleApp::class,
 			"options" => [
 				"commands" => [
 					"test_command" => App\CLI\Test::class

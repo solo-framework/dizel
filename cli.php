@@ -21,13 +21,5 @@ $configFile = "config/cli.dev.php";
 
 $isDebug = filter_var((getenv("APP_DEBUG_MODE")), FILTER_VALIDATE_BOOLEAN);
 
-//try
-//{
-	Application::createApplication($configFile, $isDebug);
-	Application::getInstance()->run();
-//}
-//catch (Throwable $e)
-//{
-//	print_r($e);
-//}
-//print_r(Application::getInstance()->app->getContainer()->get("environment"));
+Application::createApplication($configFile, $isDebug);
+Application::getInstance()->run();

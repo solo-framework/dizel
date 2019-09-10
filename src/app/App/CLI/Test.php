@@ -29,10 +29,6 @@ class Test extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-//		echo $a;
-//		throw new \Error("ddd");
-//		throw new \Exception("exxxx");
-//
 		// Пример запуска  ./run-in-container.sh 'export APP_DEBUG_MODE=1 && cd /app && php cli.php test_command -b blabla  password'
 
 //		print_r($input->getOptions());

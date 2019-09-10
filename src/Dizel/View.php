@@ -14,6 +14,7 @@ use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use Slim\Http\Response;
 use Slim\Views\Twig;
+use Twig\Error\LoaderError;
 
 abstract class View extends Controller
 {
@@ -92,7 +93,14 @@ abstract class View extends Controller
 			$data[$name] = $this->$name;
 		}
 
-		return $this->view->fetch($templateFile, $data);
+		try
+		{
+			return $this->view->fetch($templateFile, $data);
+		}
+		catch (LoaderError $e)
+		{
+			return "View render error: " . $e->getMessage();
+		}
 	}
 
 	/**

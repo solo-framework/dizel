@@ -22,12 +22,5 @@ use Dizel\Application;
 $configFile = getenv("APP_CONFIG");//"config/web.dev.php";
 $isDebug = filter_var((getenv("APP_DEBUG_MODE")), FILTER_VALIDATE_BOOLEAN);
 
-//try
-//{
-	Application::createApplication($configFile, $isDebug);
-	Application::getInstance()->run();
-//}
-//catch (Throwable $e)
-//{
-//	print_r($e);
-//}
+Application::createApplication($configFile, $isDebug);
+Application::getInstance()->run();
