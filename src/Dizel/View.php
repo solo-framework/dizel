@@ -49,22 +49,6 @@ abstract class View extends Controller
 	 */
 	public function display(Response $response, $templateFile = null, $ext = "twig")
 	{
-//		$data = [];
-//
-//		// помещаем в шаблон публичные переменные представления
-//		$rc = new ReflectionClass($this);
-//		$props = $rc->getProperties(\ReflectionProperty::IS_PUBLIC);
-//
-//		if ($templateFile == null)
-//			$templateFile = $rc->getShortName() . ".{$ext}";
-//
-//		foreach ($props as $item)
-//		{
-//			$name = $item->getName();
-//			$data[$name] = $this->$name;
-//		}
-//		return $this->view->render($response, $templateFile, $data);
-
 		return $response->write($this->render($templateFile, $ext));
 	}
 

@@ -47,7 +47,7 @@ return [
 
 			// Twig_Environment options
 			"options" => [
-				"path"       => "src/app/templates",
+				"path"       => "src/app/App/templates",
 				"debug"      => true,
 				"cache"      => "var/cache",
 				"extensions" => [
