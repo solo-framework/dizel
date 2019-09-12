@@ -1,7 +1,7 @@
 {
 	"name": "afi/dizel-framework",
 	"description": "Application skeleton for Diezel framework",
-	"type": "project",
+	"type": "library",
 	"license": "MIT",
 	"authors": [
 		{
