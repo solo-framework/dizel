@@ -109,7 +109,7 @@ class Context
 	 *
 	 * @return mixed
 	 * */
-	public static function push($objectName)
+	public static function delete($objectName)
 	{
 		$res = self::get($objectName);
 		self::clear($objectName);
@@ -130,6 +130,7 @@ class Context
 		else
 			return null;
 	}
+
 
 	/**
 	 * Уничтожает все данные контекста
