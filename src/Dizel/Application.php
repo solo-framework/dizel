@@ -136,6 +136,24 @@ class Application
 	}
 
 	/**
+	 * @return \Psr\Container\ContainerInterface
+	 */
+	public function getContainer()
+	{
+		return $this->app->getContainer();
+	}
+
+	/**
+	 * Returns Slim application
+	 *
+	 * @return App
+	 */
+	public function getSlimApplication()
+	{
+		return $this->app;
+	}
+
+	/**
 	 * Приватный коструктор для реализации Singleton
 	 *
 	 * @param boolean $isDebug Режим отладки приложения
@@ -156,21 +174,33 @@ class Application
 		$container = new \Slim\Container($configuration);
 		Logger::init(Configurator::getSection("logger"));
 
-		$phpErrorHandler = Configurator::get("app:phpErrorHandler");
-		// Это обработчик внутренних ошибок PHP
-		if ($phpErrorHandler)
-		{
-			$container['phpErrorHandler'] = function ($container) use ($phpErrorHandler, $isDebug) {
-				return new $phpErrorHandler($container, $isDebug);
-			};
-		}
+//		$phpErrorHandler = Configurator::get("app:phpErrorHandler");
+//		// Это обработчик внутренних ошибок PHP
+//		if ($phpErrorHandler)
+//		{
+//			$container['phpErrorHandler'] = function ($container) use ($phpErrorHandler, $isDebug) {
+//				return new $phpErrorHandler($container, $isDebug);
+//			};
+//		}
+//
+//		$errorHandler = Configurator::get("app:errorHandler");
+//		if ($errorHandler)
+//		{
+//			$container['errorHandler'] = function ($container) use ($errorHandler, $isDebug) {
+//				return new $errorHandler($container, $isDebug);
+//			};
+//		}
 
-		$errorHandler = Configurator::get("app:errorHandler");
-		if ($errorHandler)
+		// обработчики ошибок
+		$handlers = Configurator::getSection("handlers");
+		if (count($handlers) > 0)
 		{
-			$container['errorHandler'] = function ($container) use ($errorHandler, $isDebug) {
-				return new $errorHandler($container, $isDebug);
-			};
+			foreach ($handlers as $handlerName => $handlerClass)
+			{
+				$container[$handlerName] = function ($container) use ($handlerClass, $isDebug) {
+					return new $handlerClass($container, $isDebug);
+				};
+			}
 		}
 
 		// компоненты приложения (напр. notAllowedHandler и пр)

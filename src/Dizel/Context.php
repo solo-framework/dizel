@@ -191,7 +191,7 @@ class Context
 	{
 		$flash["message"] = $message;
 		$flash["id"] = $flashMessageId;
-		self::set("__flash_message", $flash);
+		self::set("__dizel_flash_message", $flash);
 	}
 
 	/**
@@ -202,6 +202,6 @@ class Context
 	 */
 	public static function getFlashMessage()
 	{
-		return self::push("__solo_flash_message");
+		return self::delete("__dizel_flash_message");
 	}
 }
