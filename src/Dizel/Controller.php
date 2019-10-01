@@ -56,7 +56,7 @@ abstract class Controller
 	 * @param Response $response
 	 * @param array $args
 	 *
-	 * @return ResponseInterface
+	 * @return Response
 	 */
 	public abstract function execute(Request $request, Response $response, array $args);
 }
