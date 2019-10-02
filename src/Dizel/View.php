@@ -45,7 +45,7 @@ abstract class View extends Controller
 	 * @param null $templateFile
 	 * @param string $ext
 	 *
-	 * @return \Psr\Http\Message\ResponseInterface
+	 * @return Response
 	 */
 	public function display(Response $response, $templateFile = null, $ext = "twig")
 	{
